@@ -1,0 +1,554 @@
+[
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 9,
+        "OrderExec": 1,
+        "OrderGroup": 4,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MLA' AND\nSEMAPHORE_PFA = 'GREEN'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 10,
+        "OrderExec": 2,
+        "OrderGroup": 4,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MLB' AND\nSEMAPHORE_PFA = 'GREEN'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 11,
+        "OrderExec": 3,
+        "OrderGroup": 4,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MLM' AND\nSEMAPHORE_PFA = 'GREEN'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 12,
+        "OrderExec": 4,
+        "OrderGroup": 4,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MCO' AND\nACTIVITY \u003e= 5    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 13,
+        "OrderExec": 5,
+        "OrderGroup": 4,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MPE' AND\nACTIVITY \u003e= 5    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 14,
+        "OrderExec": 6,
+        "OrderGroup": 4,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = partially_access_group,\nbalance_policy_group = balance_for_mla WHERE SEMAPHORE_PFA = 'YELLOW'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 15,
+        "OrderExec": 7,
+        "OrderGroup": 4,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = partially_access_group,\nbalance_policy_group = balance_default WHERE       "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 16,
+        "OrderExec": 1,
+        "OrderGroup": 5,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_mla_a WHERE SEMAPHORE_PFA = 'YELLOW'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 17,
+        "OrderExec": 2,
+        "OrderGroup": 5,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_b WHERE MIA_FREQUENCY_USE = 'NOT FREQUENT'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 18,
+        "OrderExec": 3,
+        "OrderGroup": 5,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_d WHERE TPV_SEGMENT_3M = 'SMB' AND MIA_FREQUENCY_USE = 'INFREQUENT'"
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 19,
+        "OrderExec": 4,
+        "OrderGroup": 5,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_e WHERE SELLER_CHANNEL = 'ML' AND\nMIA_FREQUENCY_USE = 'FREQUENT'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 20,
+        "OrderExec": 5,
+        "OrderGroup": 5,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_f WHERE SELLER_CHANNEL = 'MP' AND\nMIA_FREQUENCY_USE = 'FREQUENT'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 21,
+        "OrderExec": 6,
+        "OrderGroup": 5,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_default WHERE       "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 22,
+        "OrderExec": 1,
+        "OrderGroup": 6,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = none WHERE MIA_FREQUENCY_USE = 'NOT FREQUENT'    "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 23,
+        "OrderExec": 2,
+        "OrderGroup": 6,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = low WHERE MIA_FREQUENCY_USE = 'INFREQUENT'    "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 24,
+        "OrderExec": 3,
+        "OrderGroup": 6,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = high WHERE MIA_FREQUENCY_USE = 'FREQUENT'    "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 25,
+        "OrderExec": 4,
+        "OrderGroup": 6,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = low WHERE       "
+    },
+    {
+        "GroupRule": "AUDIENCE",
+        "NoRule": 1,
+        "OrderExec": 1,
+        "OrderGroup": 1,
+        "Process": "Acquisition",
+        "ResultantQuery": "SELECT * FROM `TBL.MANTIS` WHERE ACTIVITY \u003e= 2 AND MIA_EXISTS = 0"
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 2,
+        "OrderExec": 1,
+        "OrderGroup": 2,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET   WHERE SIT_SITE_ID = 'MLB' AND\nFLAG_TRAVAS_RECIBIBLES = 1    "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 3,
+        "OrderExec": 2,
+        "OrderGroup": 2,
+        "Process": "Acquisition",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET   WHERE FLAG_SCORE_PFA = 1    "
+    },
+    {
+        "GroupRule": "AUDIENCE",
+        "NoRule": 26,
+        "OrderExec": 1,
+        "OrderGroup": 1,
+        "Process": "Shutdown",
+        "ResultantQuery": "SELECT * FROM `TBL.MANTIS` WHERE MIA_ON = 1    "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 27,
+        "OrderExec": 1,
+        "OrderGroup": 2,
+        "Process": "Shutdown",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  rule_disallowed_list = CONCAT(rule_disallowed_list, \"TRAVAS, \"),\npricing_group = null,\nadvance_access_group = no_access_group WHERE SIT_SITE_ID = 'MLB' AND\nFLAG_TRAVAS_RECIBIBLES = 1    "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 28,
+        "OrderExec": 2,
+        "OrderGroup": 2,
+        "Process": "Shutdown",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET   WHERE ADVANCE_ACCESS_GROUP_EXCEPTION \u003c\u003e no_access_group AND OFFER_EXCEPTION_DUE_DATE \u003c= CURRENT_DATE"
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 29,
+        "OrderExec": 3,
+        "OrderGroup": 2,
+        "Process": "Shutdown",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  rule_disallowed_list = CONCAT(rule_disallowed_list, \"INACTIVITY, \"),\npricing_group = null,\nadvance_access_group = no_access_group WHERE TPV_L3M_DOL_AMT = 0    "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 30,
+        "OrderExec": 4,
+        "OrderGroup": 2,
+        "Process": "Shutdown",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  rule_disallowed_list = CONCAT(rule_disallowed_list, \"PFA_MODEL, \"),\npricing_group = null,\nadvance_access_group = no_access_group WHERE FLAG_SCORE_PFA = 1     AND !(RULE_EXCEPTION_DUE_DATE \u003e= CURRENT_DATE AND RULE_EXCEPTION_LIST LIKE '%PFA_MODEL%')"
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 54,
+        "OrderExec": 1,
+        "OrderGroup": 5,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_mla_a WHERE SEMAPHORE_PFA = 'YELLOW'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 55,
+        "OrderExec": 2,
+        "OrderGroup": 5,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_b WHERE MIA_FREQUENCY_USE = 'NOT FREQUENT'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 56,
+        "OrderExec": 3,
+        "OrderGroup": 5,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_d WHERE TPV_SEGMENT_3M = 'SMB' AND MIA_FREQUENCY_USE = 'INFREQUENT'"
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 57,
+        "OrderExec": 4,
+        "OrderGroup": 5,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_e WHERE SELLER_CHANNEL = 'ML' AND\nMIA_FREQUENCY_USE = 'FREQUENT'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 58,
+        "OrderExec": 5,
+        "OrderGroup": 5,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_f WHERE SELLER_CHANNEL = 'MP' AND\nMIA_FREQUENCY_USE = 'FREQUENT'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 59,
+        "OrderExec": 6,
+        "OrderGroup": 5,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_default WHERE       "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 60,
+        "OrderExec": 1,
+        "OrderGroup": 6,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = none WHERE MIA_FREQUENCY_USE = 'NOT FREQUENT'    "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 61,
+        "OrderExec": 2,
+        "OrderGroup": 6,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = low WHERE MIA_FREQUENCY_USE = 'INFREQUENT'    "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 62,
+        "OrderExec": 3,
+        "OrderGroup": 6,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = high WHERE MIA_FREQUENCY_USE = 'FREQUENT'    "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 63,
+        "OrderExec": 4,
+        "OrderGroup": 6,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = low WHERE       "
+    },
+    {
+        "GroupRule": "AUDIENCE",
+        "NoRule": 36,
+        "OrderExec": 1,
+        "OrderGroup": 1,
+        "Process": "Reactivation",
+        "ResultantQuery": "SELECT * FROM `TBL.MANTIS` WHERE MIA_ON = 0    "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 37,
+        "OrderExec": 1,
+        "OrderGroup": 2,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET   WHERE SIT_SITE_ID = 'MLB' AND\nFLAG_TRAVAS_RECIBIBLES = 1    "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 38,
+        "OrderExec": 2,
+        "OrderGroup": 2,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET   WHERE ADVANCE_ACCESS_GROUP_EXCEPTION = no_access_group AND OFFER_EXCEPTION_DUE_DATE \u003c= CURRENT_DATE"
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 39,
+        "OrderExec": 3,
+        "OrderGroup": 2,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET   WHERE TPV_L3M_DOL_AMT = 0    "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 40,
+        "OrderExec": 4,
+        "OrderGroup": 2,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET   WHERE RULE_DISALLOWED_LIST LIKE '%PFA_MODEL%' AND OFFER_INFO_LAST_UPDATE_DATE \u003c= CURRENT_DATE - 7 "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 41,
+        "OrderExec": 5,
+        "OrderGroup": 2,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET   WHERE FLAG_SCORE_PFA = 1     AND !(RULE_EXCEPTION_DUE_DATE \u003e= CURRENT_DATE AND RULE_EXCEPTION_LIST LIKE '%PFA_MODEL%')"
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 48,
+        "OrderExec": 1,
+        "OrderGroup": 4,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MLA' AND\nSEMAPHORE_PFA = 'GREEN'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 49,
+        "OrderExec": 2,
+        "OrderGroup": 4,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MLB' AND\nSEMAPHORE_PFA = 'GREEN'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 50,
+        "OrderExec": 3,
+        "OrderGroup": 4,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MLM' AND\nSEMAPHORE_PFA = 'GREEN'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 51,
+        "OrderExec": 4,
+        "OrderGroup": 4,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MCO' AND\nACTIVITY \u003e= 5    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 52,
+        "OrderExec": 5,
+        "OrderGroup": 4,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = partially_access_group,\nbalance_policy_group = balance_for_mla WHERE SEMAPHORE_PFA = 'YELLOW'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 53,
+        "OrderExec": 6,
+        "OrderGroup": 4,
+        "Process": "Reactivation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = partially_access_group,\nbalance_policy_group = balance_default WHERE       "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 78,
+        "OrderExec": 1,
+        "OrderGroup": 6,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = none WHERE MIA_FREQUENCY_USE = 'NOT FREQUENT'    "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 79,
+        "OrderExec": 2,
+        "OrderGroup": 6,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = low WHERE MIA_FREQUENCY_USE = 'INFREQUENT'    "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 80,
+        "OrderExec": 3,
+        "OrderGroup": 6,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = high WHERE MIA_FREQUENCY_USE = 'FREQUENT'    "
+    },
+    {
+        "GroupRule": "PROFILE",
+        "NoRule": 81,
+        "OrderExec": 4,
+        "OrderGroup": 6,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  frequency = low WHERE       "
+    },
+    {
+        "GroupRule": "AUDIENCE",
+        "NoRule": 64,
+        "OrderExec": 1,
+        "OrderGroup": 1,
+        "Process": "Revaluation",
+        "ResultantQuery": "SELECT * FROM `TBL.MANTIS` WHERE MIA_ON = 1    "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 65,
+        "OrderExec": 1,
+        "OrderGroup": 2,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET   WHERE PRICING_GROUP_EXCEPTION \u003c\u003e NULL AND OFFER_EXCEPTION_DUE_DATE \u003c= CURRENT_DATE"
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 66,
+        "OrderExec": 1,
+        "OrderGroup": 4,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MLA' AND\nSEMAPHORE_PFA = 'GREEN'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 67,
+        "OrderExec": 2,
+        "OrderGroup": 4,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MLB' AND\nSEMAPHORE_PFA = 'GREEN'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 68,
+        "OrderExec": 3,
+        "OrderGroup": 4,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MLM' AND\nSEMAPHORE_PFA = 'GREEN'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 69,
+        "OrderExec": 4,
+        "OrderGroup": 4,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = totall_acces_group WHERE SIT_SITE_ID = 'MPE' AND\nACTIVITY \u003e= 5    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 70,
+        "OrderExec": 5,
+        "OrderGroup": 4,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = partially_access_group,\nbalance_policy_group = balance_for_mla WHERE SEMAPHORE_PFA = 'YELLOW'    "
+    },
+    {
+        "GroupRule": "ACCESS",
+        "NoRule": 71,
+        "OrderExec": 6,
+        "OrderGroup": 4,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  advance_access_group = partially_access_group,\nbalance_policy_group = balance_default WHERE       "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 72,
+        "OrderExec": 1,
+        "OrderGroup": 5,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_mla_a WHERE SEMAPHORE_PFA = 'YELLOW'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 73,
+        "OrderExec": 2,
+        "OrderGroup": 5,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_b WHERE MIA_FREQUENCY_USE = 'NOT FREQUENT'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 74,
+        "OrderExec": 3,
+        "OrderGroup": 5,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_d WHERE TPV_SEGMENT_3M = 'SMB' AND MIA_FREQUENCY_USE = 'INFREQUENT'"
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 75,
+        "OrderExec": 4,
+        "OrderGroup": 5,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_e WHERE SELLER_CHANNEL = 'ML' AND\nMIA_FREQUENCY_USE = 'FREQUENT'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 76,
+        "OrderExec": 5,
+        "OrderGroup": 5,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_f WHERE SELLER_CHANNEL = 'MP' AND\nMIA_FREQUENCY_USE = 'FREQUENT'    "
+    },
+    {
+        "GroupRule": "PRICING",
+        "NoRule": 77,
+        "OrderExec": 6,
+        "OrderGroup": 5,
+        "Process": "Revaluation",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  pricing_group = pricing_default WHERE       "
+    },
+    {
+        "GroupRule": "AUDIENCE",
+        "NoRule": 82,
+        "OrderExec": 1,
+        "OrderGroup": 1,
+        "Process": "ChangeShutdown",
+        "ResultantQuery": "SELECT * FROM `TBL.MANTIS` WHERE MIA_ON = 0    "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 83,
+        "OrderExec": 1,
+        "OrderGroup": 2,
+        "Process": "ChangeShutdown",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  rule_disallowed_list = CONCAT(rule_disallowed_list, \"TRAVAS, \") WHERE SIT_SITE_ID = 'MLB' AND\nFLAG_TRAVAS_RECIBIBLES = 1    "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 84,
+        "OrderExec": 2,
+        "OrderGroup": 2,
+        "Process": "ChangeShutdown",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  rule_disallowed_list = CONCAT(rule_disallowed_list, \"INACTIVITY, \") WHERE TPV_L3M_DOL_AMT = 0    "
+    },
+    {
+        "GroupRule": "CROSS_FILTERS",
+        "NoRule": 85,
+        "OrderExec": 3,
+        "OrderGroup": 2,
+        "Process": "ChangeShutdown",
+        "ResultantQuery": "UPDATE `TABLA_ORIGEN` SET  rule_disallowed_list = CONCAT(rule_disallowed_list, \"PFA_MODEL, \") WHERE FLAG_SCORE_PFA = 1     AND !(RULE_EXCEPTION_DUE_DATE \u003e= CURRENT_DATE AND RULE_EXCEPTION_LIST LIKE '%PFA_MODEL%')"
+    }
+]

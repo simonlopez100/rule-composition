@@ -34,6 +34,11 @@ func ReadCSV(reader *csv.Reader, headerIndex map[string]int, expectedHeaders []s
 		return nil, fmt.Errorf("error al leer el archivo CSV: %w", err)
 	}
 
+	// // Ignorar la primera línea (asumiendo que es el encabezado)
+	// if len(rows) > 0 {
+	// 	rows = rows[1:]
+	// }
+
 	// Iterar sobre las filas y almacenar solo las columnas de interés
 	for i, row := range rows {
 		order, err := strconv.Atoi(row[headerIndex["Order"]])

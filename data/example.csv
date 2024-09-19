@@ -174,5 +174,3 @@ ChangeShutdown,CATEGORY_FILTERS,3,TPV_MIN,TPV_MIN_ECO,assignment_full,ALL,ECO,FA
 AVG_TPV_DOL_AMT_3M > 1100    ","rule_disallowed_list = CONCAT(rule_disallowed_list, ""TPV_MIN, "")",AVG_TPV_DOL_AMT_3M,>,1100,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""TPV_MIN, "")",,,,,,,,
 ChangeShutdown,CATEGORY_FILTERS,4,TPV_MIN,TPV_MIN_MP,assignment_full,ALL,MP,FALSE,"SELLER_CHANNEL = 'MP' AND
 AVG_TPV_DOL_AMT_3M > 1200    ","rule_disallowed_list = CONCAT(rule_disallowed_list, ""TPV_MIN, "")",AVG_TPV_DOL_AMT_3M,>,1200,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""TPV_MIN, "")",,,,,,,,
-,,1,,,,,,FALSE,      ,,,,,,,,,,,,,,,,,,,
-,,2,,,,,,FALSE,      ,,,,,,,,,,,,,,,,,,,

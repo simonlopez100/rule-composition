@@ -2,87 +2,212 @@ package ruleformation
 
 import (
 	"fmt"
-	"reflect"
-	"strconv"
+	"strings"
 
-	readercsv "github.com/mercadolibre/rule-formation/internal/readcsv"
+	reader "github.com/mercadolibre/rule-formation/internal/readcsv"
 )
 
-type BigQueryTable struct {
-	NoRule         int
-	Process        string
-	OrderGroup     int
-	GroupRule      string
-	OrderExec      int
-	ResultantQuery string
+const (
+	updateQuery   = "UPDATE `TABLA_ORIGEN` SET  %s WHERE %s"
+	selectQuery = "SELECT * FROM `TBL.MANTIS` WHERE %s"
+	groupRuleAudience = "AUDIENCE"
+	groupRuleCrossFilters = "CROSS_FILTERS"
+	groupRuleCategoryFilters = "CATEGORY_FILTERS"
+	groupRuleAccess = "ACCESS"
+	groupRulePricing = "PRICING"
+	groupRuleProfile = "PROFILE"
+	processGroupAcquisition = "ACQUISITION"
+	acquisitionFilterFlag = "FILTER_FLAG=1"
+	subProcessessFilter = "RuleCategoryName"
+)
+
+type Process struct {
+	ProcessName       string
+	ProcessRows       []reader.RowData
+	ProccessFunctions map[string]func([]reader.RowData) ([]BigQueryTable, error)
 }
 
-var RuleCategoryNameTranslation = map[string]int{
-	"AUDCIENCE":        1,
-	"CROSS__FILTERS":   2,
-	"CATEGORY_FILTERS": 3,
-	"ACCESS":           4,
-	"PRICING":          5,
-	"PROFILE":          6,
+//To-do update function generic
+
+//to-do select function generic
+
+func NewProcess(processName string, processRows []reader.RowData, processFunctions map[string]func([]reader.RowData) ([]BigQueryTable, error)) *Process {
+	return &Process{
+		ProcessName:       processName,
+		ProcessRows:       processRows,
+		ProccessFunctions: processFunctions,
+	}
 }
 
-func RuleFormationOrchestator(data []readercsv.RowData) (bqArray []BigQueryTable, err error) {
-
-	// Inicializar la lista de BigQueryTable, creacion index por fila (NO_RULE)
-	for _, row := range data {
-		bqTable := BigQueryTable{
-			NoRule:         row.LineIndex,
-			Process:        row.ProcessName,
-			OrderGroup:     row.Order,
-			GroupRule:      row.RuleCategoryName,
-			OrderExec:      row.Order,
-			ResultantQuery: "Aqui va la logica de la query",
+func (p *Process) ExecuteProcess() (result []BigQueryTable, err error) {
+	//execute processes into processFunctions and append into result
+	for _, processFunc := range p.ProccessFunctions {
+		processResult, err := processFunc(p.ProcessRows)
+		if err != nil {
+			return nil, err
 		}
-		// result[i] = bqTable
-		bqArray = append(bqArray, bqTable)
+		result = append(result, processResult...)
 	}
-
-	// Poblar process, ordergroup, grouprule, orderexec
-
-	// Armar query seleccion de tabla  SELECT * FROM `TABLE`
-
-	// Armar query de estructura WHERE
-
-	// Armar query de estructura WHERE con SET
-
-	return bqArray, nil
-}
-
-func PartitionByField(array []BigQueryTable, field string) ([][]BigQueryTable, error) {
-	// Crear un mapa de particiones
-	partitions := make(map[string][]BigQueryTable)
-
-	for _, row := range array {
-		var key string
-		val := reflect.ValueOf(row)
-		fieldVal := val.FieldByName(field)
-		if !fieldVal.IsValid() {
-			return nil, fmt.Errorf("field not defined: %s", field)
-		}
-
-		switch fieldVal.Kind() {
-		case reflect.String:
-			key = fieldVal.String()
-		case reflect.Int:
-			key = strconv.Itoa(int(fieldVal.Int()))
-		default:
-			return nil, fmt.Errorf("unsupported field type: %s", fieldVal.Kind())
-		}
-
-		partitions[key] = append(partitions[key], row)
-	}
-
-	// Convertir el mapa de particiones a un slice de slices
-	var result [][]BigQueryTable
-	for _, partition := range partitions {
-		result = append(result, partition)
-	}
-	fmt.Println("Resultado partition", result)
-
 	return result, nil
+}
+
+func AudienceSubProcess(ad []reader.RowData) (bg []BigQueryTable, err error) {
+	subProccess, err := PartitionByField(ad, subProcessessFilter)
+	if err != nil {
+		return nil, err
+	}
+	audienceProcess, err := getProcessArray(subProccess, groupRuleAudience)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, row := range audienceProcess {
+		queryResult := createDynamicQuery(row)
+		BigQueryObject, err := formatBigQueryTable(row, queryResult)
+		if err != nil {
+			return nil, err
+		}
+		bg = append(bg, BigQueryObject)
+	}
+
+	return
+}
+
+func CrossFiltersSubProcess(ad []reader.RowData) (bg []BigQueryTable, err error) {
+		subProccess, err := PartitionByField(ad, subProcessessFilter)
+	if err != nil {
+		return nil, err
+	}
+	crossFiltersProcces, err := getProcessArray(subProccess, groupRuleCrossFilters)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, row := range crossFiltersProcces {
+		if strings.ToUpper(row.ProcessName) == processGroupAcquisition {
+			row.AssignmentResult = acquisitionFilterFlag
+		}
+		queryResult := createDynamicQuery(row)
+		BigQueryObject, err := formatBigQueryTable(row, queryResult)
+		if err != nil {
+			return nil, err
+		}
+		bg = append(bg, BigQueryObject)
+	}
+
+	return
+}
+
+func CategoryFiltersSubProcess(ad []reader.RowData) (bg []BigQueryTable, err error) {
+		subProccess, err := PartitionByField(ad, subProcessessFilter)
+	if err != nil {
+		return nil, err
+	}
+	categoryFiltersProcces, err := getProcessArray(subProccess, groupRuleCategoryFilters)
+	if err != nil {
+		return nil, err
+	}
+
+
+
+	for _, row := range categoryFiltersProcces {
+		if strings.ToUpper(row.ProcessName) == processGroupAcquisition {
+			row.AssignmentResult = acquisitionFilterFlag
+		}
+		queryResult := createDynamicQuery(row)
+		BigQueryObject, err := formatBigQueryTable(row, queryResult)
+		if err != nil {
+			return nil, err
+		}
+		bg = append(bg, BigQueryObject)
+	}
+
+	return
+}
+
+func AccessSubProcess(ad []reader.RowData) (bg []BigQueryTable, err error) {
+		subProccess, err := PartitionByField(ad, subProcessessFilter)
+	if err != nil {
+		return nil, err
+	}
+	accessProcess, err := getProcessArray(subProccess, "ACCESS")
+	if err != nil {
+		return nil, err
+	}
+
+	for _, row := range accessProcess {
+		queryResult := createDynamicQuery(row)
+		BigQueryObject, err := formatBigQueryTable(row, queryResult)
+		if err != nil {
+			return nil, err
+		}
+		bg = append(bg, BigQueryObject)
+	}
+
+	return
+}
+
+func PricingSubProcess(ad []reader.RowData) (bg []BigQueryTable, err error) {
+	subProccess, err := PartitionByField(ad, subProcessessFilter)
+	if err != nil {
+		return nil, err
+	}
+	pricingProcess, err := getProcessArray(subProccess, groupRulePricing)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, row := range pricingProcess {
+		queryResult := createDynamicQuery(row)
+		BigQueryObject, err := formatBigQueryTable(row, queryResult)
+		if err != nil {
+			return nil, err
+		}
+		bg = append(bg, BigQueryObject)
+	}
+
+	return
+}
+
+func ProfileSubProcess(ad []reader.RowData) (bg []BigQueryTable, err error) {
+		subProccess, err := PartitionByField(ad, subProcessessFilter)
+	if err != nil {
+		return nil, err
+	}
+	audienceProcess, err := getProcessArray(subProccess, groupRuleProfile)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, row := range audienceProcess {
+		queryResult := createDynamicQuery(row)
+		BigQueryObject, err := formatBigQueryTable(row, queryResult)
+		if err != nil {
+			return nil, err
+		}
+		bg = append(bg, BigQueryObject)
+	}
+
+	return
+}
+
+func getProcessArray(partitions interface{}, subProcess string)([]reader.RowData, error) {
+		for key, process := range partitions.(map[string]interface{}) {
+		if len(process.([]reader.RowData)) == 0 {
+			continue
+		}
+		if key == subProcess {
+			return process.([]reader.RowData), nil
+		}
+	}
+	return nil, nil
+}
+
+
+
+func createDynamicQuery(row reader.RowData) string {
+	if strings.ToUpper(row.RuleCategoryName) == groupRuleAudience {
+		return fmt.Sprintf(selectQuery, row.SentenceResult)
+	}
+	return fmt.Sprintf(updateQuery, row.AssignmentResult, row.SentenceResult)
 }

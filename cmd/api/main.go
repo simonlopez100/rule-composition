@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 
-	readecsv "github.com/mercadolibre/rule-formation/internal/readcsv"
+	readercsv "github.com/mercadolibre/rule-formation/internal/readcsv"
 	ruleformation "github.com/mercadolibre/rule-formation/internal/ruleformation"
 )
 
@@ -44,7 +44,7 @@ func main() {
 	}
 
 	// Leer el archivo .csv y almacenarlo en una estructura
-	data, err := readecsv.ReadCSV(reader, headerIndex, expectedHeaders)
+	data, err := readercsv.ReadCSV(reader, headerIndex, expectedHeaders)
 	if err != nil {
 		log.Fatalf("Error al leer el archivo: %v", err)
 	}
@@ -57,14 +57,14 @@ func main() {
 
 	// fmt.Printf("%+v\n", result)
 
-	// Particionar los datos por el campo "Process"
-	partitions, err := ruleformation.PartitionByField(result, "Process")
-	if err != nil {
-		log.Fatalf("Error al particionar los datos: %v", err)
-	}
+	// // Particionar los datos por el campo "Process"
+	// partitions, err := ruleformation.PartitionByField(result, "Process")
+	// if err != nil {
+	// 	log.Fatalf("Error al particionar los datos: %v", err)
+	// }
 
-	// Convertir el resultado a JSON para una impresión más legible
-	jsonResult, err := json.MarshalIndent(partitions, "", "  ")
+	// // Convertir el resultado a JSON para una impresión más legible
+	jsonResult, err := json.MarshalIndent(result, "", "  ")
 	if err != nil {
 		log.Fatalf("Error al convertir el resultado a JSON: %v", err)
 	}
