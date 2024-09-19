@@ -1,0 +1,178 @@
+Process Name,Rule Category Name,Order,Rule Name,Rule Condition Name,Rule Type,SITE,SELLER CHANNEL,HAS RULE EXCEPTION,Sentence Result,Assignment Result,Columna 1,Operador 1,Valor 1,Operador lógico 1,Columna 2,Operador 2,Valor 2,Propiedad 1,Asignación 1,Resultado 1,Separador 1,Propiedad 2 ,Asignación 2,Resultado 2,Separador 2,Propiedad 3,Asignación 3,Resultado 3
+Acquisition,AUDIENCE,1,AUDIENCE_ACQUISITION,AUDIENCE_ACQUISITION,audience,ALL,ALL,,ACTIVITY >= 2 AND MIA_EXISTS = 0,,ACTIVITY,>=,2,AND,MIA_EXISTS,=,0,,,,,,,,,,,
+Acquisition,CROSS_FILTERS,1,TRAVAS,TRAVAS_MLB,filter,MLB,ALL,FALSE,"SIT_SITE_ID = 'MLB' AND
+FLAG_TRAVAS_RECIBIBLES = 1    ",,FLAG_TRAVAS_RECIBIBLES,=,1,,,,,,,,,,,,,,,
+Acquisition,CROSS_FILTERS,2,PFA_MODEL,PFA_MODEL,filter,ALL,ALL,FALSE,FLAG_SCORE_PFA = 1    ,,FLAG_SCORE_PFA,=,1,,,,,,,,,,,,,,,
+Acquisition,CATEGORY_FILTERS,1,CLAIMS,CLAIMS_ML,filter,ALL,ML,FALSE,"SELLER_CHANNEL = 'ML' AND
+CLAIMS_15D_QTY >= 10 AND CLAIMS_15D_DOL_AMT > 1000",,CLAIMS_15D_QTY,>=,10,AND,CLAIMS_15D_DOL_AMT,>,1000,,,,,,,,,,,
+Acquisition,CATEGORY_FILTERS,2,CLAIMS,CLAIMS_ECO,filter,ALL,ECO,FALSE,"SELLER_CHANNEL = 'ECO' AND
+CLAIMS_15D_QTY >= 10 AND CLAIMS_15D_DOL_AMT > 1000",,CLAIMS_15D_QTY,>=,10,AND,CLAIMS_15D_DOL_AMT,>,1000,,,,,,,,,,,
+Acquisition,CATEGORY_FILTERS,3,TPV_MIN,TPV_MIN_ML,filter,ALL,ML,FALSE,"SELLER_CHANNEL = 'ML' AND
+AVG_TPV_DOL_AMT_3M > 1000    ",,AVG_TPV_DOL_AMT_3M,>,1000,,,,,,,,,,,,,,,
+Acquisition,CATEGORY_FILTERS,4,TPV_MIN,TPV_MIN_ECO,filter,ALL,ECO,FALSE,"SELLER_CHANNEL = 'ECO' AND
+AVG_TPV_DOL_AMT_3M > 1100    ",,AVG_TPV_DOL_AMT_3M,>,1100,,,,,,,,,,,,,,,
+Acquisition,CATEGORY_FILTERS,5,TPV_MIN,TPV_MIN_MP,filter,ALL,MP,FALSE,"SELLER_CHANNEL = 'MP' AND
+AVG_TPV_DOL_AMT_3M > 1200    ",,AVG_TPV_DOL_AMT_3M,>,1200,,,,,,,,,,,,,,,
+Acquisition,ACCESS,1,ALLOWED_PFA,ALLOWED_PFA_MLA,assignment_filter,MLA,ALL,FALSE,"SIT_SITE_ID = 'MLA' AND
+SEMAPHORE_PFA = 'GREEN'    ",advance_access_group = totall_acces_group,SEMAPHORE_PFA,=,'GREEN',,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Acquisition,ACCESS,2,ALLOWED_PFA,ALLOWED_PFA_MLB,assignment_filter,MLB,ALL,FALSE,"SIT_SITE_ID = 'MLB' AND
+SEMAPHORE_PFA = 'GREEN'    ",advance_access_group = totall_acces_group,SEMAPHORE_PFA,=,'GREEN',,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Acquisition,ACCESS,3,ALLOWED_PFA,ALLOWED_PFA_MLM,assignment_filter,MLM,ALL,FALSE,"SIT_SITE_ID = 'MLM' AND
+SEMAPHORE_PFA = 'GREEN'    ",advance_access_group = totall_acces_group,SEMAPHORE_PFA,=,'GREEN',,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Acquisition,ACCESS,4,ALLOWED_ACTIVITY,ALLOWED_ACTIVITY_MCO,assignment_filter,MCO,ALL,FALSE,"SIT_SITE_ID = 'MCO' AND
+ACTIVITY >= 5    ",advance_access_group = totall_acces_group,ACTIVITY,>=,5,,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Acquisition,ACCESS,5,ALLOWED_ACTIVITY,ALLOWED_ACTIVITY_MPE,assignment_filter,MPE,ALL,FALSE,"SIT_SITE_ID = 'MPE' AND
+ACTIVITY >= 5    ",advance_access_group = totall_acces_group,ACTIVITY,>=,5,,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Acquisition,ACCESS,6,PARTIALLY_ALLOWED,PARTIALLY_ALLOWED,assignment_filter,ALL,ALL,FALSE,SEMAPHORE_PFA = 'YELLOW'    ,"advance_access_group = partially_access_group,
+balance_policy_group = balance_for_mla",SEMAPHORE_PFA,=,'YELLOW',,,,,advance_access_group, = ,partially_access_group,",
+",balance_policy_group, = ,balance_for_mla,,,,
+Acquisition,ACCESS,7,DEFAULT,DEFAULT,assignment_filter,ALL,ALL,FALSE,      ,"advance_access_group = partially_access_group,
+balance_policy_group = balance_default",,,,,,,,advance_access_group, = ,partially_access_group,",
+",balance_policy_group, = ,balance_default,,,,
+Acquisition,PRICING,1,PARTIALLY_ALLOWED_PRICING,PARTIALLY_ALLOWED_PRICING,assignment_filter,ALL,ALL,FALSE,SEMAPHORE_PFA = 'YELLOW'    ,pricing_group = pricing_mla_a,SEMAPHORE_PFA,=,'YELLOW',,,,,pricing_group, = ,pricing_mla_a,,,,,,,,
+Acquisition,PRICING,2,NOT_FREQUENT,NOT_FREQUENT,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'NOT FREQUENT'    ,pricing_group = pricing_b,MIA_FREQUENCY_USE,=,'NOT FREQUENT',,,,,pricing_group, = ,pricing_b,,,,,,,,
+Acquisition,PRICING,3,SMB_INFREQUENT,SMB_INFREQUENT,assignment_filter,ALL,ALL,FALSE,TPV_SEGMENT_3M = 'SMB' AND MIA_FREQUENCY_USE = 'INFREQUENT',pricing_group = pricing_d,TPV_SEGMENT_3M,=,'SMB',AND,MIA_FREQUENCY_USE,=,'INFREQUENT',pricing_group, = ,pricing_d,,,,,,,,
+Acquisition,PRICING,4,FREQUENT,FREQUENT_ML,assignment_filter,ALL,ML,FALSE,"SELLER_CHANNEL = 'ML' AND
+MIA_FREQUENCY_USE = 'FREQUENT'    ",pricing_group = pricing_e,MIA_FREQUENCY_USE,=,'FREQUENT',,,,,pricing_group, = ,pricing_e,,,,,,,,
+Acquisition,PRICING,5,FREQUENT,FREQUENT_MP,assignment_filter,ALL,MP,FALSE,"SELLER_CHANNEL = 'MP' AND
+MIA_FREQUENCY_USE = 'FREQUENT'    ",pricing_group = pricing_f,MIA_FREQUENCY_USE,=,'FREQUENT',,,,,pricing_group, = ,pricing_f,,,,,,,,
+Acquisition,PRICING,6,DEFAULT,DEFAULT,assignment_filter,ALL,ALL,FALSE,      ,pricing_group = pricing_default,,,,,,,,pricing_group, = ,pricing_default,,,,,,,,
+Acquisition,PROFILE,1,PROFILE_INACTIVE,PROFILE_INACTIVE,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'NOT FREQUENT'    ,frequency = none,MIA_FREQUENCY_USE,=,'NOT FREQUENT',,,,,frequency, = ,none,,,,,,,,
+Acquisition,PROFILE,2,PROFILE_RECOVERY,PROFILE_RECOVERY,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'INFREQUENT'    ,frequency = low,MIA_FREQUENCY_USE,=,'INFREQUENT',,,,,frequency, = ,low,,,,,,,,
+Acquisition,PROFILE,3,PROFILE_ACTIVE,PROFILE_ACTIVE,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'FREQUENT'    ,frequency = high,MIA_FREQUENCY_USE,=,'FREQUENT',,,,,frequency, = ,high,,,,,,,,
+Acquisition,PROFILE,4,DEFAULT,DEFAULT,assignment_filter,ALL,ALL,FALSE,      ,frequency = low,,,,,,,,frequency, = ,low,,,,,,,,
+Shutdown,AUDIENCE,1,AUDIENCE_ON,AUDIENCE_ON,audience,ALL,ALL,FALSE,MIA_ON = 1    ,,MIA_ON,=,1,,,,,,,,,,,,,,,
+Shutdown,CROSS_FILTERS,1,TRAVAS,TRAVAS_MLB,assignment_full,MLB,ALL,FALSE,"SIT_SITE_ID = 'MLB' AND
+FLAG_TRAVAS_RECIBIBLES = 1    ","rule_disallowed_list = CONCAT(rule_disallowed_list, ""TRAVAS, ""),
+pricing_group = null,
+advance_access_group = no_access_group",FLAG_TRAVAS_RECIBIBLES,=,1,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""TRAVAS, "")",",
+",pricing_group, = ,null,",
+",advance_access_group, = ,no_access_group
+Shutdown,CROSS_FILTERS,2,FILTER_ON_FULL,FILTER_ON_FULL,filter,ALL,ALL,FALSE,ADVANCE_ACCESS_GROUP_EXCEPTION <> no_access_group AND OFFER_EXCEPTION_DUE_DATE <= CURRENT_DATE,,ADVANCE_ACCESS_GROUP_EXCEPTION,<>,no_access_group,AND,OFFER_EXCEPTION_DUE_DATE,<=,CURRENT_DATE,,,,,,,,,,,
+Shutdown,CROSS_FILTERS,3,INACTIVITY,INACTIVITY,assignment_full,ALL,ALL,FALSE,TPV_L3M_DOL_AMT = 0    ,"rule_disallowed_list = CONCAT(rule_disallowed_list, ""INACTIVITY, ""),
+pricing_group = null,
+advance_access_group = no_access_group",TPV_L3M_DOL_AMT,=,0,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""INACTIVITY, "")",",
+",pricing_group, = ,null,",
+",advance_access_group, = ,no_access_group
+Shutdown,CROSS_FILTERS,4,PFA_MODEL,PFA_MODEL,assignment_full,ALL,ALL,TRUE,FLAG_SCORE_PFA = 1     AND !(RULE_EXCEPTION_DUE_DATE >= CURRENT_DATE AND RULE_EXCEPTION_LIST LIKE '%PFA_MODEL%'),"rule_disallowed_list = CONCAT(rule_disallowed_list, ""PFA_MODEL, ""),
+pricing_group = null,
+advance_access_group = no_access_group",FLAG_SCORE_PFA,=,1,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""PFA_MODEL, "")",",
+",pricing_group, = ,null,",
+",advance_access_group, = ,no_access_group
+Shutdown,CATEGORY_FILTERS,1,CLAIMS,CLAIMS_ML,assignment_full,ALL,ML,FALSE,"SELLER_CHANNEL = 'ML' AND
+CLAIMS_15D_QTY >= 10 AND CLAIMS_15D_DOL_AMT > 1000","rule_disallowed_list = CONCAT(rule_disallowed_list, ""CLAIMS, ""),
+pricing_group = null,
+advance_access_group = no_access_group",CLAIMS_15D_QTY,>=,10,AND,CLAIMS_15D_DOL_AMT,>,1000,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""CLAIMS, "")",",
+",pricing_group, = ,null,",
+",advance_access_group, = ,no_access_group
+Shutdown,CATEGORY_FILTERS,2,CLAIMS,CLAIMS_ECO,assignment_full,ALL,ECO,FALSE,"SELLER_CHANNEL = 'ECO' AND
+CLAIMS_15D_QTY >= 10 AND CLAIMS_15D_DOL_AMT > 1000","rule_disallowed_list = CONCAT(rule_disallowed_list, ""CLAIMS, ""),
+pricing_group = null,
+advance_access_group = no_access_group",CLAIMS_15D_QTY,>=,10,AND,CLAIMS_15D_DOL_AMT,>,1000,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""CLAIMS, "")",",
+",pricing_group, = ,null,",
+",advance_access_group, = ,no_access_group
+Shutdown,CATEGORY_FILTERS,3,TPV_MIN,TPV_MIN_ML,assignment_full,ALL,ML,FALSE,"SELLER_CHANNEL = 'ML' AND
+AVG_TPV_DOL_AMT_3M > 1000    ","rule_disallowed_list = CONCAT(rule_disallowed_list, ""TPV_MIN, ""),
+pricing_group = null,
+advance_access_group = no_access_group",AVG_TPV_DOL_AMT_3M,>,1000,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""TPV_MIN, "")",",
+",pricing_group, = ,null,",
+",advance_access_group, = ,no_access_group
+Shutdown,CATEGORY_FILTERS,4,TPV_MIN,TPV_MIN_ECO,assignment_full,ALL,ECO,FALSE,"SELLER_CHANNEL = 'ECO' AND
+AVG_TPV_DOL_AMT_3M > 1100    ","rule_disallowed_list = CONCAT(rule_disallowed_list, ""TPV_MIN, ""),
+pricing_group = null,
+advance_access_group = no_access_group",AVG_TPV_DOL_AMT_3M,>,1100,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""TPV_MIN, "")",",
+",pricing_group, = ,null,",
+",advance_access_group, = ,no_access_group
+Shutdown,CATEGORY_FILTERS,5,TPV_MIN,TPV_MIN_MP,assignment_full,ALL,MP,FALSE,"SELLER_CHANNEL = 'MP' AND
+AVG_TPV_DOL_AMT_3M > 1200    ","rule_disallowed_list = CONCAT(rule_disallowed_list, ""TPV_MIN, ""),
+pricing_group = null,
+advance_access_group = no_access_group",AVG_TPV_DOL_AMT_3M,>,1200,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""TPV_MIN, "")",",
+",pricing_group, = ,null,",
+",advance_access_group, = ,no_access_group
+Reactivation,AUDIENCE,1,AUDIENCE_OFF,AUDIENCE_OFF,audience,ALL,ALL,FALSE,MIA_ON = 0    ,,MIA_ON,=,0,,,,,,,,,,,,,,,
+Reactivation,CROSS_FILTERS,1,TRAVAS,TRAVAS_MLB,filter,MLB,ALL,FALSE,"SIT_SITE_ID = 'MLB' AND
+FLAG_TRAVAS_RECIBIBLES = 1    ",,FLAG_TRAVAS_RECIBIBLES,=,1,,,,,,,,,,,,,,,
+Reactivation,CROSS_FILTERS,2,FILTER_OFF_FULL,FILTER_OFF_FULL,filter,ALL,ALL,FALSE,ADVANCE_ACCESS_GROUP_EXCEPTION = no_access_group AND OFFER_EXCEPTION_DUE_DATE <= CURRENT_DATE,,ADVANCE_ACCESS_GROUP_EXCEPTION,=,no_access_group,AND,OFFER_EXCEPTION_DUE_DATE,<=,CURRENT_DATE,,,,,,,,,,,
+Reactivation,CROSS_FILTERS,3,INACTIVITY,INACTIVITY,filter,ALL,ALL,FALSE,TPV_L3M_DOL_AMT = 0    ,,TPV_L3M_DOL_AMT,=,0,,,,,,,,,,,,,,,
+Reactivation,CROSS_FILTERS,4,PFA_MODEL_7D,PFA_MODEL_7D,filter,ALL,ALL,FALSE,RULE_DISALLOWED_LIST LIKE '%PFA_MODEL%' AND OFFER_INFO_LAST_UPDATE_DATE <= CURRENT_DATE - 7 ,,RULE_DISALLOWED_LIST,LIKE,'%PFA_MODEL%',AND,OFFER_INFO_LAST_UPDATE_DATE,<=,CURRENT_DATE - 7 ,,,,,,,,,,,
+Reactivation,CROSS_FILTERS,5,PFA_MODEL,PFA_MODEL,filter,ALL,ALL,TRUE,FLAG_SCORE_PFA = 1     AND !(RULE_EXCEPTION_DUE_DATE >= CURRENT_DATE AND RULE_EXCEPTION_LIST LIKE '%PFA_MODEL%'),,FLAG_SCORE_PFA,=,1,,,,,,,,,,,,,,,
+Reactivation,CATEGORY_FILTERS,1,CLAIMS_7D,CLAIMS_7D,filter,ALL,ALL,FALSE,RULE_DISALLOWED_LIST LIKE 'CLAIMS' AND OFFER_INFO_LAST_UPDATE_DATE <= CURRENT_DATE - 7 ,,RULE_DISALLOWED_LIST,LIKE,'CLAIMS',AND,OFFER_INFO_LAST_UPDATE_DATE,<=,CURRENT_DATE - 7 ,,,,,,,,,,,
+Reactivation,CATEGORY_FILTERS,2,CLAIMS,CLAIMS_ML,filter,ALL,ML,FALSE,"SELLER_CHANNEL = 'ML' AND
+CLAIMS_15D_QTY >= 10 AND CLAIMS_15D_DOL_AMT > 1000",,CLAIMS_15D_QTY,>=,10,AND,CLAIMS_15D_DOL_AMT,>,1000,,,,,,,,,,,
+Reactivation,CATEGORY_FILTERS,3,CLAIMS,CLAIMS_ECO,filter,ALL,ECO,FALSE,"SELLER_CHANNEL = 'ECO' AND
+CLAIMS_15D_QTY >= 10 AND CLAIMS_15D_DOL_AMT > 1000",,CLAIMS_15D_QTY,>=,10,AND,CLAIMS_15D_DOL_AMT,>,1000,,,,,,,,,,,
+Reactivation,CATEGORY_FILTERS,4,TPV_MIN,TPV_MIN_ML,filter,ALL,ML,FALSE,"SELLER_CHANNEL = 'ML' AND
+AVG_TPV_DOL_AMT_3M > 1000    ",,AVG_TPV_DOL_AMT_3M,>,1000,,,,,,,,,,,,,,,
+Reactivation,CATEGORY_FILTERS,5,TPV_MIN,TPV_MIN_ECO,filter,ALL,ECO,FALSE,"SELLER_CHANNEL = 'ECO' AND
+AVG_TPV_DOL_AMT_3M > 1100    ",,AVG_TPV_DOL_AMT_3M,>,1100,,,,,,,,,,,,,,,
+Reactivation,CATEGORY_FILTERS,6,TPV_MIN,TPV_MIN_MP,filter,ALL,MP,FALSE,"SELLER_CHANNEL = 'MP' AND
+AVG_TPV_DOL_AMT_3M > 1200    ",,AVG_TPV_DOL_AMT_3M,>,1200,,,,,,,,,,,,,,,
+Reactivation,ACCESS,1,ALLOWED_PFA,ALLOWED_PFA_MLA,assignment_filter,MLA,ALL,FALSE,"SIT_SITE_ID = 'MLA' AND
+SEMAPHORE_PFA = 'GREEN'    ",advance_access_group = totall_acces_group,SEMAPHORE_PFA,=,'GREEN',,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Reactivation,ACCESS,2,ALLOWED_PFA,ALLOWED_PFA_MLB,assignment_filter,MLB,ALL,FALSE,"SIT_SITE_ID = 'MLB' AND
+SEMAPHORE_PFA = 'GREEN'    ",advance_access_group = totall_acces_group,SEMAPHORE_PFA,=,'GREEN',,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Reactivation,ACCESS,3,ALLOWED_PFA,ALLOWED_PFA_MLM,assignment_filter,MLM,ALL,FALSE,"SIT_SITE_ID = 'MLM' AND
+SEMAPHORE_PFA = 'GREEN'    ",advance_access_group = totall_acces_group,SEMAPHORE_PFA,=,'GREEN',,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Reactivation,ACCESS,4,ALLOWED_ACTIVITY,ALLOWED_ACTIVITY_MCO,assignment_filter,MCO,ALL,FALSE,"SIT_SITE_ID = 'MCO' AND
+ACTIVITY >= 5    ",advance_access_group = totall_acces_group,ACTIVITY,>=,5,,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Reactivation,ACCESS,5,PARTIALLY_ALLOWED,PARTIALLY_ALLOWED,assignment_filter,ALL,ALL,FALSE,SEMAPHORE_PFA = 'YELLOW'    ,"advance_access_group = partially_access_group,
+balance_policy_group = balance_for_mla",SEMAPHORE_PFA,=,'YELLOW',,,,,advance_access_group, = ,partially_access_group,",
+",balance_policy_group, = ,balance_for_mla,,,,
+Reactivation,ACCESS,6,DEFAULT,DEFAULT,assignment_filter,ALL,ALL,FALSE,      ,"advance_access_group = partially_access_group,
+balance_policy_group = balance_default",,,,,,,,advance_access_group, = ,partially_access_group,",
+",balance_policy_group, = ,balance_default,,,,
+Reactivation,PRICING,1,PARTIALLY_ALLOWED_PRICING,PARTIALLY_ALLOWED_PRICING,assignment_filter,ALL,ALL,FALSE,SEMAPHORE_PFA = 'YELLOW'    ,pricing_group = pricing_mla_a,SEMAPHORE_PFA,=,'YELLOW',,,,,pricing_group, = ,pricing_mla_a,,,,,,,,
+Reactivation,PRICING,2,NOT_FREQUENT,NOT_FREQUENT,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'NOT FREQUENT'    ,pricing_group = pricing_b,MIA_FREQUENCY_USE,=,'NOT FREQUENT',,,,,pricing_group, = ,pricing_b,,,,,,,,
+Reactivation,PRICING,3,SMB_INFREQUENT,SMB_INFREQUENT,assignment_filter,ALL,ALL,FALSE,TPV_SEGMENT_3M = 'SMB' AND MIA_FREQUENCY_USE = 'INFREQUENT',pricing_group = pricing_d,TPV_SEGMENT_3M,=,'SMB',AND,MIA_FREQUENCY_USE,=,'INFREQUENT',pricing_group, = ,pricing_d,,,,,,,,
+Reactivation,PRICING,4,FREQUENT,FREQUENT_ML,assignment_filter,ALL,ML,FALSE,"SELLER_CHANNEL = 'ML' AND
+MIA_FREQUENCY_USE = 'FREQUENT'    ",pricing_group = pricing_e,MIA_FREQUENCY_USE,=,'FREQUENT',,,,,pricing_group, = ,pricing_e,,,,,,,,
+Reactivation,PRICING,5,FREQUENT,FREQUENT_MP,assignment_filter,ALL,MP,FALSE,"SELLER_CHANNEL = 'MP' AND
+MIA_FREQUENCY_USE = 'FREQUENT'    ",pricing_group = pricing_f,MIA_FREQUENCY_USE,=,'FREQUENT',,,,,pricing_group, = ,pricing_f,,,,,,,,
+Reactivation,PRICING,6,DEFAULT,DEFAULT,assignment_filter,ALL,ALL,FALSE,      ,pricing_group = pricing_default,,,,,,,,pricing_group, = ,pricing_default,,,,,,,,
+Reactivation,PROFILE,1,PROFILE_INACTIVE,PROFILE_INACTIVE,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'NOT FREQUENT'    ,frequency = none,MIA_FREQUENCY_USE,=,'NOT FREQUENT',,,,,frequency, = ,none,,,,,,,,
+Reactivation,PROFILE,2,PROFILE_RECOVERY,PROFILE_RECOVERY,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'INFREQUENT'    ,frequency = low,MIA_FREQUENCY_USE,=,'INFREQUENT',,,,,frequency, = ,low,,,,,,,,
+Reactivation,PROFILE,3,PROFILE_ACTIVE,PROFILE_ACTIVE,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'FREQUENT'    ,frequency = high,MIA_FREQUENCY_USE,=,'FREQUENT',,,,,frequency, = ,high,,,,,,,,
+Reactivation,PROFILE,4,DEFAULT,DEFAULT,assignment_filter,ALL,ALL,FALSE,      ,frequency = low,,,,,,,,frequency, = ,low,,,,,,,,
+Revaluation,AUDIENCE,1,AUDIENCE_ON,AUDIENCE_ON,audience,ALL,ALL,FALSE,MIA_ON = 1    ,,MIA_ON,=,1,,,,,,,,,,,,,,,
+Revaluation,CROSS_FILTERS,1,FILTER_FREEZE,FILTER_FREEZE,filter,ALL,ALL,FALSE,PRICING_GROUP_EXCEPTION <> NULL AND OFFER_EXCEPTION_DUE_DATE <= CURRENT_DATE,,PRICING_GROUP_EXCEPTION,<>,NULL,AND,OFFER_EXCEPTION_DUE_DATE,<=,CURRENT_DATE,,,,,,,,,,,
+Revaluation,ACCESS,1,ALLOWED_PFA,ALLOWED_PFA_MLA,assignment_filter,MLA,ALL,FALSE,"SIT_SITE_ID = 'MLA' AND
+SEMAPHORE_PFA = 'GREEN'    ",advance_access_group = totall_acces_group,SEMAPHORE_PFA,=,'GREEN',,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Revaluation,ACCESS,2,ALLOWED_PFA,ALLOWED_PFA_MLB,assignment_filter,MLB,ALL,FALSE,"SIT_SITE_ID = 'MLB' AND
+SEMAPHORE_PFA = 'GREEN'    ",advance_access_group = totall_acces_group,SEMAPHORE_PFA,=,'GREEN',,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Revaluation,ACCESS,3,ALLOWED_PFA,ALLOWED_PFA_MLM,assignment_filter,MLM,ALL,FALSE,"SIT_SITE_ID = 'MLM' AND
+SEMAPHORE_PFA = 'GREEN'    ",advance_access_group = totall_acces_group,SEMAPHORE_PFA,=,'GREEN',,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Revaluation,ACCESS,4,ALLOWED_ACTIVITY,ALLOWED_ACTIVITY_MPE,assignment_filter,MPE,ALL,FALSE,"SIT_SITE_ID = 'MPE' AND
+ACTIVITY >= 5    ",advance_access_group = totall_acces_group,ACTIVITY,>=,5,,,,,advance_access_group, = ,totall_acces_group,,,,,,,,
+Revaluation,ACCESS,5,PARTIALLY_ALLOWED,PARTIALLY_ALLOWED,assignment_filter,ALL,ALL,FALSE,SEMAPHORE_PFA = 'YELLOW'    ,"advance_access_group = partially_access_group,
+balance_policy_group = balance_for_mla",SEMAPHORE_PFA,=,'YELLOW',,,,,advance_access_group, = ,partially_access_group,",
+",balance_policy_group, = ,balance_for_mla,,,,
+Revaluation,ACCESS,6,DEFAULT,DEFAULT,assignment_filter,ALL,ALL,FALSE,      ,"advance_access_group = partially_access_group,
+balance_policy_group = balance_default",,,,,,,,advance_access_group, = ,partially_access_group,",
+",balance_policy_group, = ,balance_default,,,,
+Revaluation,PRICING,1,PARTIALLY_ALLOWED_PRICING,PARTIALLY_ALLOWED_PRICING,assignment_filter,ALL,ALL,FALSE,SEMAPHORE_PFA = 'YELLOW'    ,pricing_group = pricing_mla_a,SEMAPHORE_PFA,=,'YELLOW',,,,,pricing_group, = ,pricing_mla_a,,,,,,,,
+Revaluation,PRICING,2,NOT_FREQUENT,NOT_FREQUENT,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'NOT FREQUENT'    ,pricing_group = pricing_b,MIA_FREQUENCY_USE,=,'NOT FREQUENT',,,,,pricing_group, = ,pricing_b,,,,,,,,
+Revaluation,PRICING,3,SMB_INFREQUENT,SMB_INFREQUENT,assignment_filter,ALL,ALL,FALSE,TPV_SEGMENT_3M = 'SMB' AND MIA_FREQUENCY_USE = 'INFREQUENT',pricing_group = pricing_d,TPV_SEGMENT_3M,=,'SMB',AND,MIA_FREQUENCY_USE,=,'INFREQUENT',pricing_group, = ,pricing_d,,,,,,,,
+Revaluation,PRICING,4,FREQUENT,FREQUENT_ML,assignment_filter,ALL,ML,FALSE,"SELLER_CHANNEL = 'ML' AND
+MIA_FREQUENCY_USE = 'FREQUENT'    ",pricing_group = pricing_e,MIA_FREQUENCY_USE,=,'FREQUENT',,,,,pricing_group, = ,pricing_e,,,,,,,,
+Revaluation,PRICING,5,FREQUENT,FREQUENT_MP,assignment_filter,ALL,MP,FALSE,"SELLER_CHANNEL = 'MP' AND
+MIA_FREQUENCY_USE = 'FREQUENT'    ",pricing_group = pricing_f,MIA_FREQUENCY_USE,=,'FREQUENT',,,,,pricing_group, = ,pricing_f,,,,,,,,
+Revaluation,PRICING,6,DEFAULT,DEFAULT,assignment_filter,ALL,ALL,FALSE,      ,pricing_group = pricing_default,,,,,,,,pricing_group, = ,pricing_default,,,,,,,,
+Revaluation,PROFILE,1,PROFILE_INACTIVE,PROFILE_INACTIVE,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'NOT FREQUENT'    ,frequency = none,MIA_FREQUENCY_USE,=,'NOT FREQUENT',,,,,frequency, = ,none,,,,,,,,
+Revaluation,PROFILE,2,PROFILE_RECOVERY,PROFILE_RECOVERY,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'INFREQUENT'    ,frequency = low,MIA_FREQUENCY_USE,=,'INFREQUENT',,,,,frequency, = ,low,,,,,,,,
+Revaluation,PROFILE,3,PROFILE_ACTIVE,PROFILE_ACTIVE,assignment_filter,ALL,ALL,FALSE,MIA_FREQUENCY_USE = 'FREQUENT'    ,frequency = high,MIA_FREQUENCY_USE,=,'FREQUENT',,,,,frequency, = ,high,,,,,,,,
+Revaluation,PROFILE,4,DEFAULT,DEFAULT,assignment_filter,ALL,ALL,FALSE,      ,frequency = low,,,,,,,,frequency, = ,low,,,,,,,,
+ChangeShutdown,AUDIENCE,1,AUDIENCE_OFF,AUDIENCE_OFF,audience,ALL,ALL,FALSE,MIA_ON = 0    ,,MIA_ON,=,0,,,,,,,,,,,,,,,
+ChangeShutdown,CROSS_FILTERS,1,TRAVAS,TRAVAS_MLB,assignment_full,MLB,ALL,FALSE,"SIT_SITE_ID = 'MLB' AND
+FLAG_TRAVAS_RECIBIBLES = 1    ","rule_disallowed_list = CONCAT(rule_disallowed_list, ""TRAVAS, "")",FLAG_TRAVAS_RECIBIBLES,=,1,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""TRAVAS, "")",,,,,,,,
+ChangeShutdown,CROSS_FILTERS,2,INACTIVITY,INACTIVITY,assignment_full,ALL,ALL,FALSE,TPV_L3M_DOL_AMT = 0    ,"rule_disallowed_list = CONCAT(rule_disallowed_list, ""INACTIVITY, "")",TPV_L3M_DOL_AMT,=,0,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""INACTIVITY, "")",,,,,,,,
+ChangeShutdown,CROSS_FILTERS,3,PFA_MODEL,PFA_MODEL,assignment_full,ALL,ALL,TRUE,FLAG_SCORE_PFA = 1     AND !(RULE_EXCEPTION_DUE_DATE >= CURRENT_DATE AND RULE_EXCEPTION_LIST LIKE '%PFA_MODEL%'),"rule_disallowed_list = CONCAT(rule_disallowed_list, ""PFA_MODEL, "")",FLAG_SCORE_PFA,=,1,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""PFA_MODEL, "")",,,,,,,,
+ChangeShutdown,CATEGORY_FILTERS,1,CLAIMS,CLAIMS_ECO,assignment_full,ALL,ECO,FALSE,"SELLER_CHANNEL = 'ECO' AND
+CLAIMS_15D_QTY >= 10 AND CLAIMS_15D_DOL_AMT > 1000","rule_disallowed_list = CONCAT(rule_disallowed_list, ""CLAIMS, "")",CLAIMS_15D_QTY,>=,10,AND,CLAIMS_15D_DOL_AMT,>,1000,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""CLAIMS, "")",,,,,,,,
+ChangeShutdown,CATEGORY_FILTERS,2,TPV_MIN,TPV_MIN_ML,assignment_full,ALL,ML,FALSE,"SELLER_CHANNEL = 'ML' AND
+AVG_TPV_DOL_AMT_3M > 1000    ","rule_disallowed_list = CONCAT(rule_disallowed_list, ""TPV_MIN, "")",AVG_TPV_DOL_AMT_3M,>,1000,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""TPV_MIN, "")",,,,,,,,
+ChangeShutdown,CATEGORY_FILTERS,3,TPV_MIN,TPV_MIN_ECO,assignment_full,ALL,ECO,FALSE,"SELLER_CHANNEL = 'ECO' AND
+AVG_TPV_DOL_AMT_3M > 1100    ","rule_disallowed_list = CONCAT(rule_disallowed_list, ""TPV_MIN, "")",AVG_TPV_DOL_AMT_3M,>,1100,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""TPV_MIN, "")",,,,,,,,
+ChangeShutdown,CATEGORY_FILTERS,4,TPV_MIN,TPV_MIN_MP,assignment_full,ALL,MP,FALSE,"SELLER_CHANNEL = 'MP' AND
+AVG_TPV_DOL_AMT_3M > 1200    ","rule_disallowed_list = CONCAT(rule_disallowed_list, ""TPV_MIN, "")",AVG_TPV_DOL_AMT_3M,>,1200,,,,,rule_disallowed_list, = ,"CONCAT(rule_disallowed_list, ""TPV_MIN, "")",,,,,,,,
+,,1,,,,,,FALSE,      ,,,,,,,,,,,,,,,,,,,
+,,2,,,,,,FALSE,      ,,,,,,,,,,,,,,,,,,,
